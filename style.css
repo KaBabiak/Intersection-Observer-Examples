@@ -1,0 +1,19 @@
+.tile {
+  height: 20vh;
+  width: 100%;
+  border: 5px solid black;
+}
+
+.scroll {
+  background-color: red;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  display: none;
+}
+
+.scroll:hover {
+  cursor: pointer;
+}
