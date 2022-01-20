@@ -1,7 +1,7 @@
 export function createScrollToTop() {
   var intersectionObserver = new IntersectionObserver(
     (entries) => {
-      if (!entries[0].isIntersecting) {
+      if (!entries[0].isIntersecting && document.getElementById("first")) {
         document.getElementById("button").style.display = "block";
       } else {
         document.getElementById("button").style.display = "none";
@@ -10,7 +10,7 @@ export function createScrollToTop() {
     { threshold: 0.55 }
   );
 
-  intersectionObserver.observe(document.querySelector("#first"));
+  intersectionObserver.observe(document.getElementById("first"));
 
   document.getElementById("button").addEventListener("click", scroll);
 }

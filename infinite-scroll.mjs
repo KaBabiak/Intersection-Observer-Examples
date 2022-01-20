@@ -1,14 +1,19 @@
-export function createTiles(tilesNumber = 50) {
+import { createElement } from "./helpers.mjs";
+
+export function createOfferTiles(offers) {
   const observer = createIntersectionObserver();
-  for (let i = 0; i < tilesNumber; i++) {
-    const tile = document.createElement("div");
-    tile.setAttribute("class", "tile");
-    if (i === 0) {
+  offers.forEach((offer, index) => {
+    const tile = createElement("div", "class", "tile");
+    if (index === 0) {
       tile.setAttribute("id", "first");
     }
-    document.body.appendChild(tile);
+
+    tile.appendChild(createElement("h3", "", "", offer.title));
+    tile.appendChild(createElement("div", "", "", offer.description));
+    tile.appendChild(createElement("div", "", "", offer.price));
+    document.getElementById("offers").appendChild(tile);
     observer.observe(tile);
-  }
+  });
 }
 
 function createIntersectionObserver() {
@@ -16,9 +21,9 @@ function createIntersectionObserver() {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && !entry.target.innerHTML) {
-          setTimeout(() => {
-            entry.target.innerHTML = "generated";
-          }, 500);
+          // setTimeout(() => {
+          //   entry.target.innerHTML = "generated";
+          // }, 500);
         }
       });
     },
