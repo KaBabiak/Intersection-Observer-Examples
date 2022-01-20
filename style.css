@@ -2,6 +2,8 @@
   height: 20vh;
   width: 100%;
   border: 5px solid black;
+  display: flex;
+  flex-direction: column;
 }
 
 .scroll {
@@ -16,4 +18,8 @@
 
 .scroll:hover {
   cursor: pointer;
+}
+
+,
+welcome {
 }
