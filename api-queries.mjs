@@ -23,3 +23,14 @@ export async function getOffersFromCategory(categoryName) {
   }
   return data.filter((element) => element.category_name === categoryName);
 }
+
+export function deleteOffer(id) {
+  fetch("http://backend-recruitment-api.herokuapp.com/offers/" + id, {
+    method: "DELETE",
+  })
+    .then((res) => {
+      res.text();
+      document.getElementById(`offer_${id}`).remove();
+    })
+    .then((res) => console.log(res));
+}

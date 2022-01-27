@@ -1,16 +1,29 @@
+//infinity scroll is disabled
+
+import { deleteOffer } from "./api-queries.mjs";
 import { createElement } from "./helpers.mjs";
 
 export function createOfferTiles(offers) {
   const observer = createIntersectionObserver();
   offers.forEach((offer, index) => {
     const tile = createElement("div", "class", "tile");
-    if (index === 0) {
-      tile.setAttribute("id", "first");
-    }
+    tile.setAttribute("id", `offer_${offer.id}`);
+    const deleteButton = createElement("div", "class", "delete-button", "x");
 
-    tile.appendChild(createElement("h3", "", "", offer.title));
-    tile.appendChild(createElement("div", "", "", offer.description));
-    tile.appendChild(createElement("div", "", "", offer.price));
+    deleteButton.setAttribute("id", index);
+    deleteButton.addEventListener("click", () => deleteOffer(offer.id));
+    const details = createElement("div", "class", "details");
+
+    details.appendChild(createElement("div", "", "", offer.title));
+    details.appendChild(
+      createElement("div", "class", "detail", offer.description)
+    );
+    details.appendChild(createElement("div", "class", "detail", offer.price));
+
+    tile.appendChild(details);
+    tile
+      .appendChild(createElement("div", "class", "button"))
+      .appendChild(deleteButton);
     document.getElementById("offers").appendChild(tile);
     observer.observe(tile);
   });
