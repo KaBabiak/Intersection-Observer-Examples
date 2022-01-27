@@ -1,9 +1,8 @@
 .tile {
-  height: 20vh;
+  height: 100px;
   width: 100%;
   border: 5px solid black;
   display: flex;
-  flex-direction: column;
 }
 
 .scroll {
@@ -19,7 +18,27 @@
 .scroll:hover {
   cursor: pointer;
 }
-
-,
-welcome {
+.details {
+  height: 100%;
+  width: 97%;
+  display: flex;
+  flex-direction: column;
+}
+.button {
+  display: flex;
+  height: 100%;
+  width: 3%;
+  align-items: center;
+  justify-content: center;
+}
+.delete-button {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  right: 10px;
+  border: 5px solid rgb(212, 68, 68);
+  text-align: center;
+}
+.delete-button:hover {
+  background-color: rgb(212, 68, 68);
 }
